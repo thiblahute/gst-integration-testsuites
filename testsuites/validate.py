@@ -24,6 +24,8 @@ The GstValidate default testsuite
 import os
 from testsuiteutils import update_assets
 from launcher.baseclasses import MediaFormatCombination
+from launcher.apps.gstvalidate import GstValidateMediaCheckTestsGenerator, GstValidateMediaDescriptor, GstValidateMediaCheckTest
+from qtdemux_editlists import GstValidateMP4EditListTestGenerator
 
 
 TEST_MANAGER = "validate"
@@ -153,4 +155,5 @@ def setup_tests(test_manager, options):
                                                                             "audiotestsrc wave=ticks")}},
                                                     valid_scenarios=valid_mixing_scenarios))
 
+    test_manager.add_generators(GstValidateMP4EditListTestGenerator(test_manager, assets_dir))
     return True
